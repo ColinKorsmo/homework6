@@ -18,7 +18,7 @@ class OrderViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(OrderUiState(availableDeliveryTimes = deliveryTimeOptions()))
     val uiState: StateFlow<OrderUiState> = _uiState.asStateFlow()
 
-    fun updateVendor(restaurant: Restaurant) {
+    fun setRestaurant(restaurant: Restaurant) {
         _uiState.update { currentState ->
             currentState.copy(
                 selectedVendor = restaurant

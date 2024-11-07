@@ -27,6 +27,8 @@ import java.text.NumberFormat
 @Composable
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
+    onCancelButtonClicked: () -> Unit,
+    onSubmitButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     // Format all prices into strings with dollar sign and 2 decimal places (e.g. $4.99)
@@ -96,13 +98,13 @@ fun OrderSummaryScreen(
         ) {
             OutlinedButton(
                 modifier = Modifier.weight(1f),
-                onClick = { /* TODO */ }
+                onClick = onCancelButtonClicked
             ) {
                 Text(stringResource(R.string.cancel))
             }
             Button(
                 modifier = Modifier.weight(1f),
-                onClick = { /* TODO */ }
+                onClick = onSubmitButtonClicked
             ) {
                 Text(stringResource(R.string.submit))
             }
@@ -123,6 +125,8 @@ fun OrderSummaryScreenPreview() {
                 orderTotalPrice = Datasource.restaurants[0].menuItems[0].price + Datasource.restaurants[0].menuItems[0].price * 0.08,
                 selectedDeliveryTime = "Sat Sep 24 7:00 PM"
             ),
+            onCancelButtonClicked = {},
+            onSubmitButtonClicked = {},
             modifier = Modifier
                 .fillMaxHeight()
                 .padding(16.dp)
